@@ -15,7 +15,7 @@ User Function ABRESZ1()
 		{"Incluir","AxInclui",0,3} ,;
 		{"Excluir","AxDeleta",0,5}}
 
-		aRotina[1,3]
+		//aRotina[1,3]
 
 	Private cDelFunc := ".T." // Validacao para a exclusao. Pode-se utilizar ExecBlock
 

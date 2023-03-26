@@ -23,31 +23,30 @@ User Function DECLVAR()
 	// Private aTeste  := {}
 	// Private dDate   := Ctod("")
 	// Private bBlock  := {||}
-
-    Local cText := "rodrigo;fabricio.silva"
-
-    If "fabricio.silva" $ Alltrim(cText)
-      Alert("Verdadeiro")
-    Else
-      Alert("Falso")
-    EndIf
+  cTexto2 := "fa" 
+  ctexto := "Fabricio Henrique Alves da Silva"
 
 
+  cTexto2 := Stuff(cTexto,5,1,'bbbb')
+  cTexto := SubStr("Fabricio Henrique Alves da Silva",1,4)
+  MsgInfo(cTexto2)
 
-	//Filha()
+
+
+	Filha()
 Return
 
-// Static Function Filha()
+Static Function Filha()
 
-// 	Alert("TESTE")
+	Alert("TESTE")
 
-// return
+return
 
-// User Function Outra()
+User Function Outra()
 
-// 	Private TESTE := 'Teste'
-// 	U_DECLVAR()
-// return
+	Private TESTE := 'Teste'
+	U_DECLVAR()
+return
 
 
 
