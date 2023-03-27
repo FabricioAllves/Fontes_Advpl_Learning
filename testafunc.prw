@@ -1,4 +1,4 @@
-//Bibliotecas
+
 #Include "Protheus.ch"
 
 /*/{Protheus.doc} zMiniForm

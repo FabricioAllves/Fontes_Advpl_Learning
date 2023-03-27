@@ -17,9 +17,6 @@ User Function Testevar()
   cTexto2 := Capital(cTexto2)
   cTexto2 := Lower(cTexto2)
   cTexto2 := StrTran(cTexto2,"a","o")
-
-  
-
 Return
 
 // - Crie uma user function TESTEVAR()

@@ -14,7 +14,7 @@
 
 //Exercicio aula de declaraçao de variaveis
 
-User Function DECLVAR()
+User Function DECLVAR
 
 	//Local cCurso := "CURSO"
 	// Private nNumero := 0
@@ -31,22 +31,20 @@ User Function DECLVAR()
   cTexto := SubStr("Fabricio Henrique Alves da Silva",1,4)
   MsgInfo(cTexto2)
 
-
-
-	Filha()
+	//Filha()
 Return
 
-Static Function Filha()
+// Static Function Filha()
 
-	Alert("TESTE")
+// 	Alert("TESTE")
 
-return
+// return
 
-User Function Outra()
+// User Function Outra()
 
-	Private TESTE := 'Teste'
-	U_DECLVAR()
-return
+// 	Private TESTE := 'Teste'
+// 	U_DECLVAR()
+// return
 
 
 
