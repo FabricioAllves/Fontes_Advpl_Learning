@@ -7,7 +7,7 @@
 
 User Function ABRESZ1()
 
-	Local nNumero   := 0
+	///Local nNumero   := 0
 	Private cCadastro := "Cadastro UM Cliente"
 
 	Private aRotina := { {"Pesquisar","AxPesqui",0,1} ,;
@@ -25,6 +25,10 @@ User Function ABRESZ1()
 	Private aIndSB1		:= {}
 	Private cCampo
 	Private aCampos   := {}
+	Private aVeiculo   := {}
+
+	//
+	aVeiculo := {"Fusca","vw","gasolina",.F.,1964,3000}
 
 
 
@@ -55,10 +59,6 @@ User Function ABRESZ1()
 	// 	nNumero++
 	// End
 
-
-
-
-	nNumero := nCalc := nAcer := 0
 
 
 	dbSelectArea("SZ1")
