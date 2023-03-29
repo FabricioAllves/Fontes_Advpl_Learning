@@ -8,6 +8,7 @@
 User Function ABRESZ1()
 
 	///Local nNumero   := 0
+	Local x
 	Private cCadastro := "Cadastro UM Cliente"
 
 	Private aRotina := { {"Pesquisar","AxPesqui",0,1} ,;
@@ -25,41 +26,34 @@ User Function ABRESZ1()
 	Private aIndSB1		:= {}
 	Private cCampo
 	Private aCampos   := {}
-	Private aVeiculo   := {}
+	Private aVeiculo  := {}
 
 	//
-	aVeiculo := {"Fusca","vw","gasolina",.F.,1964,3000}
+	aVeiculo := {}
+	AADD(aVeiculo,{"FUSCA","VW","GASOLINA",.F.,1976,10000,})
+	AADD(aVeiculo,{"CHEVETE","GM","GASOLINA",.T.,1976,30000,})
+	AADD(aVeiculo,{"LANDAU","FORD","GASOLINA",.T.,1976,30000,})
 
+	For x:=1 To Len(aVeiculo)
+		aVeiculo[x,7] := .F.
+	Next
 
+	//copia o array aVeiculo
+	AVEIC2 := ACLONE(aVeiculo)
 
+	//COLOCA O LANDAU COM VENDIDO
+	nPos := Ascan(AVEIC2, {|X| X[1] == "LANDAU"})
+	AVEIC2[nPos, 7] := .T.
 
-	// for nNumero := 1 to 10 STEP 2
-	// 	Conout(cValToChar(nNumero))
+	//REMOVER ITENS VENDIDO
+	For x:=1 To Len(AVEIC2)
+		If AVEIC2[x,7]
+			//ADEL(AVEIC2,x)
+			ASIZE(AVEIC2, Len(AVEIC2)-1)
+		EndIf
+	Next
 
-	// 	If nNumero == 5
-	// 		Loop
-	// 	ElseIf nNumero == 9
-	// 		Exit
-	// 	else
-	// 		nNumero--
-	// 	EndIf
-
-	// 	Conout("PASSOU "+CValToChar(nNumero)+" VEZES")
-	// next
-
-	// nNumero := 0
-
-	// While nNumero <= 10
-	// 	If nNumero == 5
-	// 		nNumero++
-	// 		Loop
-	// 	ElseIf nNumero == 9
-	// 		Exit
-	// 	End
-	// 	nNumero++
-	// End
-
-
+	AVEIC2:= aSort(AVEIC2,,,{|x,z| x[1] < y[1]})
 
 	dbSelectArea("SZ1")
 	dbSetOrder(1)
