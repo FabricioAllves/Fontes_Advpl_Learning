@@ -43,7 +43,13 @@
 		},
 		{
 			"label": "u_decisao"
+		},
+		{
+			"label": "U_EVAL"
+		},
+		{
+			"label": "U_DBEVAL"
 		}
 	],
-	"lastProgramExecuted": "U_ABRESZ1"
+	"lastProgramExecuted": "U_DBEVAL"
 }

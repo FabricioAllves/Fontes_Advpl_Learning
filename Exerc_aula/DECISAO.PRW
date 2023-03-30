@@ -2,10 +2,11 @@
 
 User Function DECISAO()
 
+	Local x
 	Local nNumero:=nCount:= 0
 	Local lContinua := .T.
 	Local aArray1:= {0,0,0}
-	Local aArray2:= {0}
+	Local aArray2:= {}
 	Local nPos := 0
 
 	While lContinua == .T.
@@ -22,15 +23,16 @@ User Function DECISAO()
 
 
 	For nNumero := 1 to 10
-		AADD(aArray2,{nNuemro})
+		AADD(aArray2,{nNumero})
 		If nNumero == 7
 			Exit
 		EndIf
 	next
 
-	nPos := ASCAN(aArray2,{|x| x[1] == 4})
-	ADEL(aArray2,nPos)
-	ASIZE(aArray2, Len(Array2[nPos]-1))
+	nPos := ASCAN(aArray2,{ |x| x[1] == 4})
+	ADEL(aArray2, nPos)
+	ASIZE(aArray2, Len(Array2)-1)
+	
 
 
 Return

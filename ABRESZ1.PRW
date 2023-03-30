@@ -34,6 +34,8 @@ User Function ABRESZ1()
 	AADD(aVeiculo,{"CHEVETE","GM","GASOLINA",.T.,1976,30000,})
 	AADD(aVeiculo,{"LANDAU","FORD","GASOLINA",.T.,1976,30000,})
 
+	ADEL(aVeiculo[3], aVeiculo[2])
+
 	For x:=1 To Len(aVeiculo)
 		aVeiculo[x,7] := .F.
 	Next
