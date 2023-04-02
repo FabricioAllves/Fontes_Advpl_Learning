@@ -1,70 +1,83 @@
-#include "protheus.ch"
-#include "vkey.ch"
-#include "Rwmake.ch"
-#INCLUDE "JPEG.ch"
-#include "msmgadd.ch"
+#include "Protheus.ch"
+#include "TbiConn.ch"
+#include "TbiCode.ch"
 
 
 User Function ABRESZ1()
+	Local cCliente := "000001"
+	Local cLoja    := "01"
+	Local cProd    := "000001"
+	//Local n := 0
 
-	///Local nNumero   := 0
-	Local x
-	Private cCadastro := "Cadastro UM Cliente"
-
-	Private aRotina := { {"Pesquisar","AxPesqui",0,1} ,;
-		{"Visualizar","AxVisual",0,2} ,;
-		{"Alterar","AxAltera",0,4} ,;
-		{"Incluir","AxInclui",0,3} ,;
-		{"Excluir","AxDeleta",0,5}}
-
-	//aRotina[1,3]
-
-	Private cDelFunc := ".T." // Validacao para a exclusao. Pode-se utilizar ExecBlock
-
-	Private cString   := "SZ1"
-	Private cCondicao	:= ""
-	Private aIndSB1		:= {}
-	Private cCampo
-	Private aCampos   := {}
-	Private aVeiculo  := {}
-
-	//
-	aVeiculo := {}
-	AADD(aVeiculo,{"FUSCA","VW","GASOLINA",.F.,1976,10000,})
-	AADD(aVeiculo,{"CHEVETE","GM","GASOLINA",.T.,1976,30000,})
-	AADD(aVeiculo,{"LANDAU","FORD","GASOLINA",.T.,1976,30000,})
-
-	ADEL(aVeiculo[3], aVeiculo[2])
-
-	For x:=1 To Len(aVeiculo)
-		aVeiculo[x,7] := .F.
-	Next
-
-	//copia o array aVeiculo
-	AVEIC2 := ACLONE(aVeiculo)
-
-	//COLOCA O LANDAU COM VENDIDO
-	nPos := Ascan(AVEIC2, {|X| X[1] == "LANDAU"})
-	AVEIC2[nPos, 7] := .T.
-
-	//REMOVER ITENS VENDIDO
-	For x:=1 To Len(AVEIC2)
-		If AVEIC2[x,7]
-			//ADEL(AVEIC2,x)
-			ASIZE(AVEIC2, Len(AVEIC2)-1)
-		EndIf
-	Next
-
-	AVEIC2:= aSort(AVEIC2,,,{|x,z| x[1] < y[1]})
+	RpcSetType(3)
+	PREPARE ENVIRONMENT EMPRESA "99" FILIAL "01" MODULO "FAT"
 
 	dbSelectArea("SZ1")
-	dbSetOrder(1)
+	//dbSetOrder(1)
+	dbOrderNickName("Z1CLIENT")
+	dbGoTop()
+	If dbSeek(xFilial()+cCliente+cLoja)
+		Alert(Z1_CLIENT)
 
+		While !Eof()
+			RecLock("SZ1",.F.)
+			Z1_FATOR   := 10
+			MsUnLock()
 
-	//ASort(aCampos,,,{|x,y|x[1]<y[1]})
-	dbSelectArea(cString)
-	mBrowse( 6,1,22,75,cString,aCampos,cCampo)
+			dbSkip()
+		End
+
+	else
+		RecLock("SZ1",.T.)
+		Z1_FILIAL  := xFilial()
+		Z1_CLIENT  := "000001"
+		Z1_LOJA    := "01"
+		Z1_PRODUT  := "000001"
+		Z1_UM      := "PC"
+		Z1_UMCLI   := "CX"
+		Z1_TIPO    := "M"
+		Z1_FATOR   := 10
+		MsUnLock()
+
+		// While n:=1 <= 10
+		// 	RecLock("SZ1",.T.)
+		// 	Z1_FILIAL  := xFilial()
+		// 	Z1_CLIENT  := "00000"+n
+		// 	Z1_LOJA    := "01"
+		// 	Z1_PRODUT  := "000001"
+		// 	Z1_UM      := "PC"
+		// 	Z1_UMCLI   := "CX"
+		// 	Z1_TIPO    := "M"
+		// 	Z1_FATOR   := 10
+		// 	MsUnLock()
+		// 	dbSkip()
+		// end
+	EndIf
+
+// APAGAR O REGISTRO
+	dbSelectArea("SZ1")
+	//dbSetOrder(1)
+	dbOrderNickName("Z1PRODUT")
+	If dbSeek(xFilial()+cProd)
+		RecLock("SZ1",.F.)
+		DBDELETE()
+		MsUnLock()
+	else
+		Alert("NSEM REGISTRO PARA INCLUIR")
+	EndIf
+
+	RESET ENVIRONMENT
 
 
 Return
 
+/**
+*
+* dbSelectArea("SZ1")                      -> Para posicionar em uma tabela
+* dbSetOrder(1)                            -> Para pegar algum indice
+* dbSeek()                                 -> Para Buscar algum registro
+* ReckLock("SZ1",.F.) - MsUnLock()         -> Para travar na tabela X e se for .F. incluir registro, se .F. alterar - MsUnLock() destravar tabela ao terminar
+* dbDelete()                               -> Para deletar registro
+* dbSkip                                   -> Pula par ao proximo registro
+* dbGoTop()                                -> Vai para o inicio do arquivo
+*/
