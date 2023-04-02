@@ -17,7 +17,12 @@ User Function ABRESZ1()
 	dbOrderNickName("Z1CLIENT")
 	dbGoTop()
 	If dbSeek(xFilial()+cCliente+cLoja)
-		Alert(Z1_CLIENT)
+		Alert("ACHOU")
+
+		DBSELECTAREA( "SA1" )
+		dbGoTo(2)
+		MsgInfo(A1_NOME)
+		MSUNLOCK()
 
 		While !Eof()
 			RecLock("SZ1",.F.)
@@ -42,7 +47,7 @@ User Function ABRESZ1()
 		// While n:=1 <= 10
 		// 	RecLock("SZ1",.T.)
 		// 	Z1_FILIAL  := xFilial()
-		// 	Z1_CLIENT  := "00000"+n
+		// 	Z1_CLIENT  := "00000"+cValToChar(n)
 		// 	Z1_LOJA    := "01"
 		// 	Z1_PRODUT  := "000001"
 		// 	Z1_UM      := "PC"
