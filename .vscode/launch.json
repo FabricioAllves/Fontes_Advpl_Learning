@@ -55,6 +55,9 @@
 		},
 		{
 			"label": "U_BLOCOS"
+		},
+		{
+			"label": "U_SOFTL"
 		}
 	],
 	"lastProgramExecuted": "U_ABRESZ1"

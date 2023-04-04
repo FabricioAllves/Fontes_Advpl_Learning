@@ -4,10 +4,9 @@
 
 
 User Function ABRESZ1()
-	Local cCliente := "000001"
+	Local cCliente := "000002"
 	Local cLoja    := "01"
 	Local cProd    := "PR01"
-	Local nNum     := 0
 
 	RpcSetType(3)
 	PREPARE ENVIRONMENT EMPRESA "99" FILIAL "01" MODULO "FAT"
@@ -26,36 +25,25 @@ User Function ABRESZ1()
 
 		While !Eof()
 			RecLock("SZ1",.F.)
-				Z1_PRODUT   := "PR01"
+			Z1_PRODUT   := "PR01"
 			MsUnLock()
 			dbSkip()
 		End
 
 	else
-		// RecLock("SZ1",.T.)
-		// Z1_FILIAL  := xFilial()
-		// Z1_CLIENT  := "000001"
-		// Z1_LOJA    := "01"
-		// Z1_PRODUT  := "000001"
-		// Z1_UM      := "PC"
-		// Z1_UMCLI   := "CX"
-		// Z1_TIPO    := "M"
-		// Z1_FATOR   := 10
-		// MsUnLock()
+		RecLock("SZ1",.T.)
+		Z1_FILIAL  := xFilial()
+		Z1_CLIENT  := GETSXENUM("SZ1","Z1_CLIENT")
+		Z1_LOJA    := "01"
+		Z1_PRODUT  := "000001"
+		Z1_UM      := "PC"
+		Z1_UMCLI   := "CX"
+		Z1_TIPO    := "M"
+		Z1_FATOR   := 10
+		MsUnLock()
+		ConfirmSx8()
+		dbSkip()
 
-		For nNum:=1 To 10
-			RecLock("SZ1",.T.)
-			Z1_FILIAL  := xFilial()
-			Z1_CLIENT  := "00000"+cValToChar(nNum)
-			Z1_LOJA    := "01"
-			Z1_PRODUT  := "000001"
-			Z1_UM      := "PC"
-			Z1_UMCLI   := "CX"
-			Z1_TIPO    := "M"
-			Z1_FATOR   := 10
-			MsUnLock()
-			dbSkip()
-		end
 		DBCLOSEAREA()
 	EndIf
 
@@ -66,7 +54,7 @@ User Function ABRESZ1()
 	If dbSeek(xFilial()+cProd)
 		dbGoTo(9)
 		RecLock("SZ1",.F.)
-			DBDELETE()
+		DBDELETE()
 		MsUnLock()
 	else
 		Alert("NSEM REGISTRO PARA INCLUIR")
