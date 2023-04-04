@@ -58,7 +58,10 @@
 		},
 		{
 			"label": "U_SOFTL"
+		},
+		{
+			"label": "U_PARAMETRO"
 		}
 	],
-	"lastProgramExecuted": "U_ABRESZ1"
+	"lastProgramExecuted": "U_PARAMETRO"
 }
