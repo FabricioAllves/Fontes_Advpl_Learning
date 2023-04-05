@@ -61,7 +61,10 @@
 		},
 		{
 			"label": "U_PARAMETRO"
+		},
+		{
+			"label": "U_IVisual"
 		}
 	],
-	"lastProgramExecuted": "U_PARAMETRO"
+	"lastProgramExecuted": "sigamdi"
 }
