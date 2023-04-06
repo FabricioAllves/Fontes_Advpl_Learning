@@ -3,7 +3,7 @@
 #include "TbiCode.ch"
 
 
-User Function ABRESZ1()
+User Function ABRESZ1OUTROS()
 	Local cCliente := "000002"
 	Local cLoja    := "01"
 	Local cProd    := "PR01"

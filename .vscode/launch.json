@@ -7,68 +7,15 @@
 			"name": "Depuração do idioma TOTVS",
 			"program": "${command:AskForProgramName}",
 			"cwb": "${workspaceFolder}",
-			"smartclientBin": "C:/TOTVS12_33/Protheus/Protheus/bin/smartclient/smartclient.exe",
+			"smartclientBin": "C:\\TOTVS12_33\\Protheus\\Protheus\\bin\\smartclient\\smartclient.exe",
 			"isMultiSession": true,
 			"enableTableSync": true
 		}
 	],
 	"lastPrograms": [
 		{
-			"label": "U_DECLVAR"
-		},
-		{
-			"label": "U_Outra"
-		},
-		{
-			"label": "U_Principal"
-		},
-		{
-			"args": [],
-			"label": "U_Principal"
-		},
-		{
-			"label": "U_ABRESZ1"
-		},
-		{
-			"label": "U_M461COR"
-		},
-		{
-			"label": "sigamdi"
-		},
-		{
-			"label": "U_Testevar"
-		},
-		{
-			"label": "U_Numericas"
-		},
-		{
-			"label": "u_decisao"
-		},
-		{
-			"label": "U_EVAL"
-		},
-		{
-			"label": "U_DBEVAL"
-		},
-		{
-			"label": "U_AEVAL"
-		},
-		{
-			"label": "U_BLOCOS"
-		},
-		{
-			"label": "U_SOFTL"
-		},
-		{
-			"label": "U_PARAMETRO"
-		},
-		{
-<<<<<<< HEAD
-			"label": "U_IVisual"
-=======
-			"label": "SIGAFAT"
->>>>>>> d50ca76e98ecdccf77d1b94cc8f595ebb6d69d14
+			"label": "SIGAMDI"
 		}
 	],
-	"lastProgramExecuted": "sigamdi"
+	"lastProgramExecuted": "SIGAMDI"
 }

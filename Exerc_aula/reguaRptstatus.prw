@@ -1,8 +1,7 @@
 #include "Protheus.ch"
 
 
-
-User Function PBRpt()
+User Function PBRptt()
 	Local aSay := {}
 	Local aButton := {}
 	Local nOpc := 0
