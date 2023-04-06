@@ -61,7 +61,10 @@
 		},
 		{
 			"label": "U_PARAMETRO"
+		},
+		{
+			"label": "SIGAFAT"
 		}
 	],
-	"lastProgramExecuted": "U_PARAMETRO"
+	"lastProgramExecuted": "sigamdi"
 }
