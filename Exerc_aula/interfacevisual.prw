@@ -1,10 +1,21 @@
+<<<<<<< HEAD
 #include "Protheus.ch"
 #include "Rwmake.ch"
+=======
+#include "Rwmake.ch"
+#include "Protheus.ch"
+
+
+>>>>>>> d50ca76e98ecdccf77d1b94cc8f595ebb6d69d14
 
 
 User Function IVisual()
 
+<<<<<<< HEAD
 Local cTitulo := "Aula MSDIALOG"
+=======
+Local cTitulo := "MSDIALOG"
+>>>>>>> d50ca76e98ecdccf77d1b94cc8f595ebb6d69d14
 Local cTexto  := "CNPJ"
 Local cCGC    := Space(13)  
 Local nOpca   := 0

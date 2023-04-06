@@ -63,7 +63,11 @@
 			"label": "U_PARAMETRO"
 		},
 		{
+<<<<<<< HEAD
 			"label": "U_IVisual"
+=======
+			"label": "SIGAFAT"
+>>>>>>> d50ca76e98ecdccf77d1b94cc8f595ebb6d69d14
 		}
 	],
 	"lastProgramExecuted": "sigamdi"
