@@ -4,9 +4,9 @@
 ÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜ
 ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 ±±ÉÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍ»±±
-±±ºPrograma  ³MBrwSZ1    Autor ³ Paulo Bindo        º Data ³  26/10/21   º±±
+±±ºPrograma  ³MBrwSA3    Autor ³ Paulo Bindo        º Data ³  26/10/21   º±±
 ±±ÌÍÍÍÍÍÍÍÍÍÍØÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍ¹±±
-±±ºDescricao ³ cadastro SZ1 COM MBRWOSE                                   º±±
+±±ºDescricao ³ cadastro SA3 COM MBRWOSE                                   º±±
 ±±º          ³                                                            º±±
 ±±ÌÍÍÍÍÍÍÍÍÍÍØÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹±±
 ±±ºUso       ³ AP6 IDE                                                    º±±
@@ -15,14 +15,14 @@
 ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
 /*/
 
-User Function MBrwSZ1()
-	Local cAlias := "SZ1"
+User Function MBrwSA3()
+	Local cAlias := "SA3"
 	Local aCores := {}
 	Local cFiltra := ""
 
-	Private cCadastro := "Cadastro de UM por Cliente"
+	Private cCadastro := "Cadastro de vendedores"
 	Private aRotina := {}
-	Private aIndexZ1 := {}
+	Private aIndexA3 := {}
 	Private bFiltraBrw:={||}
 
 //BOTOES MENU
@@ -31,11 +31,13 @@ User Function MBrwSZ1()
 	AADD(aRotina,{"Incluir" ,"U_BInclui" ,0,3})		//AADD(aRotina,{"Incluir" ,"AxInclui",0,3})
 	AADD(aRotina,{"Alterar" ,"U_BAltera" ,0,4})  	//AADD(aRotina,{"Alterar" ,"AxAltera" ,0,4})
 	AADD(aRotina,{"Excluir" ,"U_BDeleta" ,0,5})		//AADD(aRotina,{"Excluir" ,"AxDeleta",0,5})
-	AADD(aRotina,{"Legenda" ,"U_BLegenda" ,0,3})
-	AADD(aRotina,{"Processa" ,"U_PBMsgRun()" ,0,6})
-//CORES LEGENDA
-	AADD(aCores,{"Z1_TIPO == 'M'" ,"BR_VERDE" })
-	AADD(aCores,{"Z1_TIPO == 'D'" ,"BR_AMARELO" })
+	//AADD(aRotina,{"Legenda" ,"U_BLegenda" ,0,3})
+	If RETCODUSR() # "000000"
+		AADD(aRotina,{"Processa" ,"U_PBMsgRun()" ,0,6})
+	EndIf
+	//CORES LEGENDA
+	//AADD(aCores,{"Z1_TIPO == 'M'" ,"BR_VERDE" })
+	//AADD(aCores,{"Z1_TIPO == 'D'" ,"BR_AMARELO" })
 
 	dbSelectArea(cAlias)
 	dbSetOrder(1)
@@ -43,8 +45,8 @@ User Function MBrwSZ1()
 //| Cria o filtro na MBrowse utilizando a função FilBrowse
 //+------------------------------------------------------------
 
-	cFiltra	:= ' SZ1->Z1_FATOR > 10 '
-	bFiltraBrw 	:={ || FilBrowse(cAlias,@aIndexSZ1,@cFiltra) }
+	//cFiltra	:= ' SA3->A3_FATOR > 10 '
+	bFiltraBrw 	:={ || FilBrowse(cAlias,@aIndexSA3,@cFiltra) }
 	Eval(bFiltraBrw)
 	dbSelectArea(cAlias)
 	dbGoTop()
@@ -52,7 +54,7 @@ User Function MBrwSZ1()
 //+------------------------------------------------
 //| Deleta o filtro utilizado na função FilBrowse
 //+------------------------------------------------
-	EndFilBrw(cAlias,aIndexSZ1)
+	EndFilBrw(cAlias,aIndexSA3)
 Return Nil
 
 /*/
@@ -73,11 +75,11 @@ Return Nil
 User Function BInclui(cAlias,nReg,nOpc)
 	Local nOpcao := 0
 
-	nOpcao := AxInclui(cAlias,nReg,nOpc)
+	//nOpcao := AxInclui(cAlias,nReg,nOpc)
 	If nOpcao == 1
 		MsgInfo("Inclusão efetuada com sucesso!")
 	Else
-		MsgInfo("Inclusão cancelada!")
+		MsgInfo("não e permitido a inclusão de um novo vendedor!!")
 	Endif
 
 Return Nil
