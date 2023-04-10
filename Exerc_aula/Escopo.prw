@@ -28,7 +28,7 @@ Static Function Filha()
 return
 
 User Function Secun()
-	Local nNumero := 30
+	//Local nNumero := 30
 
 	aDados := {0,0,0}
 
