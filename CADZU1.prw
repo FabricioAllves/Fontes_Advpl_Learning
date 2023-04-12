@@ -36,12 +36,12 @@ oBrw:Activate()
 return
 
 
-Static Function VldExc(cAlias,nReg,nOpc)
+User Function VldExc(cAlias,nReg,nOpc)
 	Local lRet := .T.
 	Local aArea := GetArea()
 	Local nOpcao := 0
 
-	nOpcao := AxExclui(cAlias,nReg,nOpc)
+	nOpcao := AxDeleta(cAlias,nReg,nOpc)
 
 	If nOpcao == 1
 		MsgInfo("Exclusão concluída com sucesso!")
