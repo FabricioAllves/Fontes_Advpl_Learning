@@ -14,10 +14,10 @@ User Function MOD1_MVC()
 Local oBrowse
 
 oBrowse := FWMBrowse():New()                                   /*mBrowse       */
-oBrowse:SetAlias('SZ1')                                        /*dbSelectArea  */
-oBrowse:SetDescription('Cadastro de UM Cliente')               /*Descriçao     */
-oBrowse:AddLegend( "Z1_TIPO=='D'", "YELLOW", "Divide"  )       /*Legenda       */
-oBrowse:AddLegend( "Z1_TIPO=='M'", "GREEN"  , "Multiplica"  )  /*Legenda       */
+oBrowse:SetAlias('SA3')                                        /*dbSelectArea  */
+oBrowse:SetDescription('Cadastro de Vendedor')               /*Descriçao     */
+//oBrowse:AddLegend( "Z1_TIPO=='D'", "YELLOW", "Divide"  )       /*Legenda       */
+//oBrowse:AddLegend( "Z1_TIPO=='M'", "GREEN"  , "Multiplica"  )  /*Legenda       */
 //oBrowse:SetFilterDefault( "Z1_TIPO=='M'" )
 
 oBrowse:DisableDetails()
@@ -62,7 +62,7 @@ montagem modelo dados em MVC
 
 Static Function ModelDef()
 // Cria a estrutura a ser usada no Modelo de Dados
-Local oStruSZ1 := FWFormStruct( 1, 'SZ1', /*bAvalCampo*/,/*lViewUsado*/ )
+Local oStruSZ1 := FWFormStruct( 1, 'SA3', /*bAvalCampo*/,/*lViewUsado*/ )
 Local oModel
  
 // Remove campos da estrutura                        
@@ -77,16 +77,16 @@ oModel := MPFormModel():New('MOD1MVCM', /*bPreValidacao*/, /*bPosValidacao*/, /*
 oModel:AddFields( 'SZ1MASTER', /*cOwner*/, oStruSZ1, /*bPreValidacao*/, /*bPosValidacao*/, /*bCarga*/ )
 
 //Define a chave primaria utilizada pelo modelo
-oModel:SetPrimaryKey({'Z1_FILIAL', 'Z1_CLIENT', 'Z1_LOJA' })
+oModel:SetPrimaryKey({'A3_FILIAL', 'A3_COD' })
 
 // Adiciona a descricao do Modelo de Dados
-oModel:SetDescription( 'Modelo de Dados de UM Cliente' )
+oModel:SetDescription( 'Modelo de Dados de VENDEDOR' )
 
 // Adiciona a descricao do Componente do Modelo de Dados
-oModel:GetModel( 'SZ1MASTER' ):SetDescription( 'Dados da UM Cliente' )
+oModel:GetModel( 'SZ1MASTER' ):SetDescription( 'Dados do vendedor' )
 
 // Liga a validação da ativacao do Modelo de Dados
-oModel:SetVldActivate( { |oModel| MOD1ACT( oModel ) } )
+//oModel:SetVldActivate( { |oModel| MOD1ACT( oModel ) } )
 
 Return oModel
 
@@ -104,7 +104,7 @@ Static Function ViewDef()
 // Cria um objeto de Modelo de Dados baseado no ModelDef do fonte informado
 Local oModel   := FWLoadModel( 'MOD1_MVC' ) //ModelDef() //FWLoadModel( 'MOD1_MVC' )
 // Cria a estrutura a ser usada na View
-Local oStruSZ1 := FWFormStruct( 2, 'SZ1' )
+Local oStruSZ1 := FWFormStruct( 2, 'SA3' )
 
 Local oView  
 
