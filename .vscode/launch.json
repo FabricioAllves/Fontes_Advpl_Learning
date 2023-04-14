@@ -21,7 +21,25 @@
 		},
 		{
 			"label": "U_zLogin03"
+		},
+		{
+			"label": "U_zLogin04"
+		},
+		{
+			"label": "U_fFuncC"
+		},
+		{
+			"label": "U_fFuncA"
+		},
+		{
+			"label": "U_zLogin05"
+		},
+		{
+			"label": "U_Bbloco"
+		},
+		{
+			"label": "U_zArray"
 		}
 	],
-	"lastProgramExecuted": "U_zLogin03"
+	"lastProgramExecuted": "U_zArray"
 }

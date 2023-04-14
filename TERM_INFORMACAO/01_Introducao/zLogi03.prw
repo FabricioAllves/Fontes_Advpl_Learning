@@ -10,7 +10,6 @@
 *| CBFATA01 -> Comando Baterias, FATuramento, Relatorio, Sêquencia
 *********************************************************************************************/
 
-
 /********************************************************************************************
 *| {Protheus.doc} User Function zLogin03
 *| @type Function
@@ -20,18 +19,13 @@
 *********************************************************************************************/
 User Function zLogin03()
   Local aArea := GetArea()
+  Local html := "<h6>Fabricio</h6>" + CRLF + "Henrique"
 
-  //Mostrando a mensagem de que esta na UserFunction
-  MsgInfo("Estou na User Function", "Atençao")
+  
+  MsgInfo(html, "Atençao")
 
-  fFuncA()
+  
   RestArea(aArea)
 Return
 
-Static Function fFuncA()
-
-//Mostrando a mensagem de que esta na StaticFunction
-  MsgInfo("Estou na Static Function", "Atençao")
-
-Return
 
