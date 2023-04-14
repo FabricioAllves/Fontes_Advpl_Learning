@@ -18,7 +18,10 @@
 		},
 		{
 			"label": "U_AQUERY"
+		},
+		{
+			"label": "U_zLogin03"
 		}
 	],
-	"lastProgramExecuted": "U_AQUERY"
+	"lastProgramExecuted": "U_zLogin03"
 }
