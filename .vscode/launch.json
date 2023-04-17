@@ -39,7 +39,10 @@
 		},
 		{
 			"label": "U_zArray"
+		},
+		{
+			"label": "U_ExecQuery"
 		}
 	],
-	"lastProgramExecuted": "U_zArray"
+	"lastProgramExecuted": "U_ExecQuery"
 }
