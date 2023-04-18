@@ -38,7 +38,10 @@ User Function ExecQuery()
   If nAtual < 1
     MsgInfo("Sem dados")
   else
-    MsgInfo(cValToChar(nAtual) + " fornecedor(es) encontrado(s)!", "Atenção")
+    //MsgInfo(cValToChar(nAtual) + " fornecedor(es) encontrado(s)!", "Atenção")
+    RecLock(QRY_SA2,.F.)
+		  DBDELETE()
+		MsUnLock()
   EndIf
 
   
