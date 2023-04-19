@@ -9,10 +9,12 @@
 User Function ExecQuery()
   Local aArea := GetArea()
   Local cQrySA2 := ""
-  Local nAtual := 0
+  //Local nAtual := 0
+
+
 
   //Selecionando os fornecedores via query diretamente do banco de dados
-  cQrySA2 := " SELECT TOP 100 " + CRLF
+  cQrySA2 := " SELECT TOP 2 " + CRLF
   cQrySA2 += "    A2_COD, " + CRLF
   cQrySA2 += "    A2_NOME " + CRLF
   cQrySA2 += " FROM " + CRLF
@@ -29,20 +31,24 @@ User Function ExecQuery()
 
   //Enquanto houver dados da query 
   While ! QRY_SA2->(EoF())
-    nAtual++
+    //nAtual++
+    
+    While ! SA2->(EoF()) .And. SA2->A2_COD == QRY_SA2->A2_COD
+      RecLock('SA2', .F.)
+        DBDELETE()
+      SA2->(MsUnlock())
+      SA2->(dbSkip())
+    EndDo
 
     QRY_SA2->(dbSkip())
   EndDo
   QRY_SA2->(dbCloseArea())
 
-  If nAtual < 1
-    MsgInfo("Sem dados")
-  else
-    //MsgInfo(cValToChar(nAtual) + " fornecedor(es) encontrado(s)!", "Atenção")
-    RecLock(QRY_SA2,.F.)
-		  DBDELETE()
-		MsUnLock()
-  EndIf
+  // If nAtual < 1
+  //   MsgInfo("Sem dados")
+  // else
+  //   MsgInfo(cValToChar(nAtual) + " fornecedor(es) encontrado(s)!", "Atenção")
+  // EndIf
 
   
 RestArea(aArea)
