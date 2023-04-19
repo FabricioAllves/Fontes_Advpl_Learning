@@ -16,6 +16,7 @@ User Function ExecQuery()
   //Selecionando os fornecedores via query diretamente do banco de dados
   cQrySA2 := " SELECT TOP 2 " + CRLF
   cQrySA2 += "    A2_COD, " + CRLF
+  cQrySA2 += "    A2_LOJA, " + CRLF
   cQrySA2 += "    A2_NOME " + CRLF
   cQrySA2 += " FROM " + CRLF
   cQrySA2 += "    " + RetSQLName('SA2') + " SA2 " + CRLF
@@ -31,15 +32,16 @@ User Function ExecQuery()
 
   //Enquanto houver dados da query 
   While ! QRY_SA2->(EoF())
-    //nAtual++
-    
-    While ! SA2->(EoF()) .And. SA2->A2_COD == QRY_SA2->A2_COD
+    //nAtual++   
+
+    SA2->(DbSetOrder(1))
+    if SA2->(DbSeek(xFilial("SA2")+QRY_SA2->A2_COD+QRY_SA2->A2_LOJA))
       RecLock('SA2', .F.)
         DBDELETE()
       SA2->(MsUnlock())
-      SA2->(dbSkip())
-    EndDo
-
+    else 
+      MsgInfo("Sem dados a serem executados!", "Atenção")
+    endif
     QRY_SA2->(dbSkip())
   EndDo
   QRY_SA2->(dbCloseArea())
