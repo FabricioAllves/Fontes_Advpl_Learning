@@ -42,6 +42,9 @@
 		},
 		{
 			"label": "U_ExecQuery"
+		},
+		{
+			"label": "U_ExecAut"
 		}
 	],
 	"lastProgramExecuted": "SIGAMDI"
