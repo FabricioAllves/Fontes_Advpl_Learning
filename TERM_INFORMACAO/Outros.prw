@@ -6,30 +6,38 @@
 *| @Since 17/04/2023
 *| Description: Fonte para aprender executar querys SQL(PLSQuerys)
 *********************************************************************************************/
-User Function ExecQuery()
+User Function forn()
   Local aArea := GetArea()
-  Local nCont := 0
+  Local ende := "new"
+ // Local nCont := "000004
+
+ new(@ende)
   
   //Enquanto houver dados da query 
-  DBSELECTAREA("SA2")
+  DbSelectArea("SA2")
   SA2->(DbSetOrder(1))
-  While !SA2->(EoF()) .and. nCont <= 2
-      if SA2->A2_MSBLQL <> "1"
-        nCont += 1
-        RecLock('SA2', .F.)
-        SA2->A2_NREDUZ := "SEM NOME REDUZIDO"
-        SA2->(MsUnlock())
-      endif 
+  SA2->(dbGoTop())
+  While !SA2->(EoF())
+
+    IF A2_TIPO != "F"
+      Reclock("SA2", .F.)
+        SA2->A2_END   := ende
+      MsUnLock()
+    EndIF
+      
     SA2->(dbSkip())
+     
   EndDo
   SA2->(dbCloseArea())
 
-  // If nAtual < 1
-  //   MsgInfo("Sem dados")
-  // else
-  //   MsgInfo(cValToChar(nAtual) + " fornecedor(es) encontrado(s)!", "Atenção")
-  // EndIf
 
   
 RestArea(aArea)
+Return
+
+Static function new(ende)
+
+  ende := "SEM ENDERECO"
+  MsgInfo("Alterado","Atençao")
+
 Return

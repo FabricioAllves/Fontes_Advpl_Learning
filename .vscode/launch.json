@@ -45,6 +45,13 @@
 		},
 		{
 			"label": "U_ExecAut"
+		},
+		{
+			"label": "U_Outros"
+		},
+		{
+			"args": [],
+			"label": "U_forn"
 		}
 	],
 	"lastProgramExecuted": "SIGAMDI"
