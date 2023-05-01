@@ -6,26 +6,22 @@
 *| @type Function
 *| @Author Fabricio H.
 *| @Since 00/00/0000
-*| Description: Ponto de Entrada executado após geração do pedido de venda   
+*| Description: MT410ALT - É executado após a gravação das alterações.
 *********************************************************************************************/
-User Function M410STTS()
-  Local aArea    := GetArea()
-  Local _nOper := PARAMIXB[1]
+User Function MT410ALT()
+
 
 /*
-  3 - Inclusão
   4 - Alteração
-  5 - Exclusão
-  6 - Cópia
-  7 - Devolução de Compras
 */
 
-
-If (_nOper == 3)
-	RECLOCK("SC5", .F. )
+  DBSELECTAREA("SC5")
+  RECLOCK("SC5", .F. )
     C5_TPFRETE := "C"
   MSUNLOCK()
-EndIf
 
-RestArea(aArea)
+  	MsgInfo("Pedido de venda Alterado com sucesso", "Ok")
+
+
+
 Return

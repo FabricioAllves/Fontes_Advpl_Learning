@@ -15,13 +15,6 @@ User Function PARAMETRO()
 
   MsgInfo(dToc(GetMV("MV_ULMES")))
 
-
-
-//19970101                                                                                                                                                                                                                                                  
-
-
-
-
 	RESET ENVIRONMENT
 Return
 
