@@ -11,7 +11,7 @@ User Function M410ALOK()
   Local lRet := .T.
   Local Usr  := GetMv("MV_XUSRCOD")
 
-  If PswChave(RetCodUsr()) $ Usr
+  If cUserName $ Usr
     lRet := .T.
   Else
     MsgInfo("Usuario sem permissao para Alterar pedido de venda!!", "Atenção!")
