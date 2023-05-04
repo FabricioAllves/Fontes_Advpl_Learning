@@ -52,7 +52,13 @@
 		{
 			"args": [],
 			"label": "U_forn"
+		},
+		{
+			"label": "u_zOO02"
+		},
+		{
+			"label": "sigaadv"
 		}
 	],
-	"lastProgramExecuted": "SIGAMDI"
+	"lastProgramExecuted": "sigaadv"
 }
